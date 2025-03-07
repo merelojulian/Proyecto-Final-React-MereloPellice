@@ -1,113 +1,104 @@
-import { Container, Paper, Typography, List, ListItem, ListItemText, IconButton, Button, Box } from "@mui/material"
-import { Add, Remove, Delete } from "@mui/icons-material"
-import { ThemeProvider, createTheme } from "@mui/material/styles"
+import { Container, Paper, Typography, List, ListItem, ListItemText, IconButton, Button, Box, CardMedia } from "@mui/material"
+import { Delete } from "@mui/icons-material"
+import { Link } from "react-router-dom"
+import { useContext } from "react"
+import { CartContext } from "../../../context/CartContext"
+import Swal from 'sweetalert2'
+import Counter from "../../common/counter/Counter"
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#01BFA4",
-        },
-        secondary: {
-            main: "#FB7B13",
-        },
-        text: {
-            primary: "#2C0E14",
-        },
-        background: {
-            default: "#FAF3C9",
-            paper: "#F6EFC6",
-        },
-    },
-})
 
-const CartPage = () => {
+
+const Cart = () => {
+    const { resetCart, cart, removeById, getTotalAmount } = useContext(CartContext);
+    let total = getTotalAmount();
+
+    const resetCartWithAlert = () => {
+        Swal.fire({
+            title: "Seguro quieres vaciar el carrito?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Continuar",
+            denyButtonText: "Volver"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                resetCart();
+                Swal.fire("Carrito vacío", "Tu carrito ha sido vaciado.", "success");
+            } else if (result.isDenied) {
+                Swal.fire("Acción cancelada", "No se vació el carrito.", "info");
+            }
+        });
+    };
+
+
     return (
-        <ThemeProvider theme={theme}>
-            <Box sx={{ bgcolor: 'background.default', minHeight: "100vh", py: 12 }}>
-                <Container maxWidth="md">
-                    <Paper elevation={3} sx={{ p: 3, bgcolor: 'background.paper' }}>
-                        <Typography variant="h4" gutterBottom sx={{ color: 'text.primary', fontWeight: "bold" }}>
-                            Tu carrito
+
+        <Box sx={{ bgcolor: "#FAF3C9", minHeight: "100vh", py: 12 }}>
+            <Container maxWidth="md">
+                <Paper elevation={3} sx={{ p: 3, bgcolor: "#F6EFC6" }}>
+                    <Typography variant="h4" gutterBottom sx={{ color: "#2C0E14", fontWeight: "bold" }}>
+                        Tu carrito
+                    </Typography>
+                    <List>
+                        {cart.map((elemento) => (
+                            <ListItem key={elemento.id} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1, justifyContent: "space-between" }}>
+
+                                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
+                                        <ListItemText
+                                            sx={{ alignContent: "center", flex: 1 }}
+                                            primary={<Typography sx={{ color: "#2C0E14" }}>{elemento.title}</Typography>}
+                                            secondary={<Typography sx={{ color: "#FB7B13" }}>{elemento.price}</Typography>}
+                                        />
+                                        <CardMedia
+                                            component="img"
+                                            image={elemento.imageUrl}
+                                            alt={elemento.title}
+                                            sx={{
+                                                height: 70,
+                                                width: 70,
+                                                borderRadius: "8px",
+                                                ml: 2,
+                                                objectFit: "cover"
+                                            }}
+                                        />
+                                    </Box>
+                                    <Box >
+                                        <Counter item={elemento} />
+                                    </Box>
+                                    <Box>
+                                        <IconButton
+                                            edge="end"
+                                            aria-label="delete"
+                                            sx={{ color: "#FB7B13", ml: 1, transform: 'scale(0.8)' }}
+                                            onClick={() => removeById(elemento.id)}
+                                        >
+                                            <Delete sx={{ fontSize: '1rem' }} />
+                                        </IconButton>
+                                    </Box>
+                                </Box>
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Box sx={{ mt: 4, textAlign: "right" }}>
+                        <Typography variant="h6" sx={{ mb: 2, color: "#2C0E14" }}>
+                            {cart.length > 0 && "Total: $" + total}
                         </Typography>
-                        <List>
-                            <ListItem>
-                                <ListItemText
-                                    primary={<Typography sx={{ color: 'text.primary' }}>Clásica</Typography>}
-                                    secondary={<Typography sx={{ color: 'secondary.main' }}>$4500.00</Typography>}
-                                />
-                                <Box>
-                                    <IconButton edge="end" aria-label="decrease" sx={{ color: 'secondary.main', mx: 0.1 }}>
-                                        <Remove />
-                                    </IconButton>
-                                    <Typography component="span" sx={{ mx: 0.5, color: "text.primary" }}>
-                                        2
-                                    </Typography>
-                                    <IconButton edge="end" aria-label="increase" sx={{ color: 'secondary.main' }}>
-                                        <Add />
-                                    </IconButton>
-                                    <IconButton edge="end" aria-label="delete" sx={{ color: 'secondary.main', ml: 1 }}>
-                                        <Delete />
-                                    </IconButton>
-                                </Box>
-                            </ListItem>
-
-                            <ListItem>
-                                <ListItemText
-                                    primary={<Typography sx={{ color: "text.primary" }}>JalaBacon</Typography>}
-                                    secondary={<Typography sx={{ color: 'secondary.main' }}>$5500.00</Typography>}
-                                />
-                                <Box>
-                                    <IconButton edge="end" aria-label="decrease" sx={{ color: 'secondary.main', mx: 0.1 }}>
-                                        <Remove />
-                                    </IconButton>
-                                    <Typography component="span" sx={{ mx: 0.5, color: "text.primary" }}>
-                                        1
-                                    </Typography>
-                                    <IconButton edge="end" aria-label="increase" sx={{ color: 'secondary.main' }}>
-                                        <Add />
-                                    </IconButton>
-                                    <IconButton edge="end" aria-label="delete" sx={{ color: 'secondary.main', ml: 1 }}>
-                                        <Delete />
-                                    </IconButton>
-                                </Box>
-                            </ListItem>
-
-                            <ListItem>
-                                <ListItemText
-                                    primary={<Typography sx={{ color: "text.primary" }}>La de Pollo</Typography>}
-                                    secondary={<Typography sx={{ color: 'secondary.main' }}>$4500.00</Typography>}
-                                />
-                                <Box>
-                                    <IconButton edge="end" aria-label="decrease" sx={{ color: 'secondary.main', mx: 0.1 }}>
-                                        <Remove />
-                                    </IconButton>
-                                    <Typography component="span" sx={{ mx: 0.5, color: "text.primary" }}>
-                                        3
-                                    </Typography>
-                                    <IconButton edge="end" aria-label="increase" sx={{ color: 'secondary.main' }}>
-                                        <Add />
-                                    </IconButton>
-                                    <IconButton edge="end" aria-label="delete" sx={{ color: 'secondary.main', ml: 1 }}>
-                                        <Delete />
-                                    </IconButton>
-                                </Box>
-                            </ListItem>
-                        </List>
-                        <Box sx={{ mt: 4, textAlign: "right" }}>
-                            <Typography variant="h6" sx={{ mb: 2, color: "text.primary" }}>
-                                Total: $13500.00
-                            </Typography>
-                            <Button variant="contained" color="primary" size="large" sx={{ color: "white" }}>
-                                Proceder al Pago
+                        <Box sx={{ display: "flex", justifyContent: "right", gap: 2 }}>
+                            <Link to={'/checkout'}>
+                                <Button variant="contained" color="primary" size="large" sx={{ color: "white" }}>
+                                    Proceder al Pago
+                                </Button>
+                            </Link>
+                            <Button variant="contained" color="error" size="large" sx={{ color: "white" }} onClick={resetCartWithAlert}>
+                                Vaciar Carrito
                             </Button>
                         </Box>
-                    </Paper>
-                </Container>
-            </Box>
-        </ThemeProvider>
-    )
+                    </Box>
+                </Paper>
+            </Container>
+        </Box>
+
+    );
 }
 
-export default CartPage
-
-
+export default Cart;

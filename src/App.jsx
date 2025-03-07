@@ -1,60 +1,42 @@
-// import NavBar from './components/layouts/navbar/NavBar';
-// import { ItemDetail } from './components/pages/itemDetail/itemDetail';
-// import ItemListContainer from './components/pages/itemListContainer/ItemListContainer';
-// import Footer from './components/layouts/footer/Footer';
-// import './index.css';
-// import { BrowserRouter, Routes, Route } from "react-router"
-// import Cart from './components/pages/cart/Cart';
-// import BurguerSection from './components/common/burguerSection/burguerSection';
-
-// function App() {
-//   return (
-//     <>
-//       <BrowserRouter>
-//         <NavBar />
-//         <Routes>
-//           <Route path="/" element={
-//             <BurguerSection />
-//             , <ItemListContainer />} />
-//           <Route path="/category/:name" element={<ItemListContainer />} />
-//           <Route path="/cart" element={<Cart />} />
-//           <Route path="/itemDetail/:id" element={<ItemDetail />} />
-
-//           <Route path="*" element={<h2>404 not found</h2>} />
-//         </Routes>
-//       </BrowserRouter>
-//       <Footer />
-
-//     </>
-//   );
-// }
-
-// export default App;
-
-
 import NavBar from './components/layouts/navbar/NavBar';
-import { ItemDetail } from './components/pages/itemDetail/itemDetail';
+import { ItemDetail } from './components/pages/itemDetail/ItemDetail';
 import ItemListContainer from './components/pages/itemListContainer/ItemListContainer';
 import Footer from './components/layouts/footer/Footer';
-import './index.css';
 import { BrowserRouter, Routes, Route } from "react-router"
 import Cart from './components/pages/cart/Cart';
 import BurguerSection from './components/common/burguerSection/BurguerSection';
+import Checkout from './components/pages/checkout/Checkout';
+import CartContextProvider from './context/CartContext';
+import { Toaster } from 'sonner';
+import CounterContextProvider from './context/CounterContext';
+import './index.css';
+
+
 
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<> <BurguerSection /> <ItemListContainer /> </>} />
-        <Route path="/category/:categoryName" element={<ItemListContainer />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/itemDetail/:id" element={<ItemDetail />} />
 
+      <CartContextProvider>
+        {/* <CounterContextProvider> */}
 
-        <Route path="*" element={<h2>404 not found</h2>} />
-      </Routes>
-      <Footer />
+        <Toaster duration={2000} richColors />
+
+        <NavBar />
+
+        <Routes>
+          <Route path="/" element={<> <BurguerSection /> <ItemListContainer /> </>} />
+          <Route path="/category/:name" element={<ItemListContainer />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/itemDetail/:id" element={<ItemDetail />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="*" element={<h2>404 Not Found</h2>} />
+        </Routes>
+
+        <Footer />
+        {/* </CounterContextProvider> */}
+      </CartContextProvider>
+
     </BrowserRouter>
   );
 }
