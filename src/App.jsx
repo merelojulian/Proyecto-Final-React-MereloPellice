@@ -8,7 +8,6 @@ import BurguerSection from './components/common/burguerSection/BurguerSection';
 import Checkout from './components/pages/checkout/Checkout';
 import CartContextProvider from './context/CartContext';
 import { Toaster } from 'sonner';
-import CounterContextProvider from './context/CounterContext';
 import './index.css';
 
 
@@ -18,7 +17,7 @@ function App() {
     <BrowserRouter>
 
       <CartContextProvider>
-        {/* <CounterContextProvider> */}
+
 
         <Toaster duration={2000} richColors />
 
@@ -34,7 +33,7 @@ function App() {
         </Routes>
 
         <Footer />
-        {/* </CounterContextProvider> */}
+
       </CartContextProvider>
 
     </BrowserRouter>

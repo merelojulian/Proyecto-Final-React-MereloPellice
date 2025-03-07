@@ -8,9 +8,6 @@ const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
 
 
-
-
-    
     // Agrega un producto al carrito
 
     const addToCart = (item) => {
@@ -84,18 +81,3 @@ const CartContextProvider = ({ children }) => {
 
 export default CartContextProvider;
 
-    // const addToCart = (product) => {
-    //     let existe = cart.some((elemento) => elemento.id === product.id);
-    //     if (existe) {
-    //         const nuevoArray = cart.map((elemento) => {
-    //             if (product.id === elemento.id) {
-    //                 return { ...elemento, quantity: elemento.quantity + product.quantity }
-    //             } else {
-    //                 return elemento
-    //             }
-    //         })
-    //         setCart(nuevoArray);
-    //     } else {
-    //         setCart([...cart, product]);
-    //     }
-    // }
