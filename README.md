@@ -8,6 +8,8 @@
   <img src="https://mui.com/static/logo.png" alt="Material UI" width="50"/>
  <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg" alt="Firebase" width="50"/>
 <img src="https://assets.vercel.com/image/upload/v1662130559/front/favicon/vercel/180x180.png" alt="Vercel" width="50"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS" width="50"/>
+
 </div><br/>
                     
 					
