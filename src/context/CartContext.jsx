@@ -1,6 +1,8 @@
 import { createContext, useState } from "react";
+import { toast } from "sonner";
 
 export const CartContext = createContext();
+
 
 
 const CartContextProvider = ({ children }) => {
@@ -49,6 +51,7 @@ const CartContextProvider = ({ children }) => {
     const removeById = (id) => {
         const newArray = cart.filter((elemento) => elemento.id !== id);
         setCart(newArray);
+        toast.warning("Producto eliminado del carrito", { closeButton: true });
     }
 
     // Elimina todos los productos del carrito

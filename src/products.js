@@ -76,6 +76,17 @@ export let products = [
         imageUrl: "https://res.cloudinary.com/dq6tkyvh2/image/upload/v1739718117/grooveland-designs-Kjt-sJbgy8I-unsplash_o98fcf.jpg"
     },
 
+    {
+        id: "8",
+        title: "Aristocrática",
+        price: 5500,
+        stock: 5,
+        category: "carne",
+        description: "Pan de Papa, Carne de Vacío, Salsa burguesía, Tomate, Lechuga, Cebolla, Pepinos",
+        detail: "Una hamburguesa con clase y carácter. Jugosa carne de vacío a la parrilla, acompañada de tomate fresco, lechuga crujiente, cebolla y pepinos en rodajas, todo coronado con una generosa capa de cheddar derretido. El toque final lo da nuestra exclusiva salsa Burguesía, que eleva cada bocado a otro nivel. ¡Un placer refinado para los verdaderos amantes de la hamburguesa!",
+        imageUrl: "https://res.cloudinary.com/dq6tkyvh2/image/upload/v1739312308/amirali-mirhashemian-sc5sTPMrVfk-unsplash_hec9jl.jpg"
+    },
+
     // {
     //     id: "11",
     //     title: "Papas Cheddar",

@@ -18,7 +18,6 @@ function App() {
 
       <CartContextProvider>
 
-
         <Toaster duration={2000} richColors />
 
         <NavBar />

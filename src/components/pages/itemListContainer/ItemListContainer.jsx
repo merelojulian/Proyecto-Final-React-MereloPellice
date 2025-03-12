@@ -63,7 +63,7 @@ const ItemListContainer = () => {
 
     return (
 
-        <Box sx={{ backgroundColor: "#FAF3C9", padding: 5 }}>
+        <Box sx={{ backgroundColor: "#FAF3C9", padding: 3 }}>
             <Box>
                 <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#2C0E14", mb: 4, mt: 5, fontSize: { xs: "2rem", sm: "3rem", md: "3.5rem" }, }}>
                     {obtenerTitulo()}
