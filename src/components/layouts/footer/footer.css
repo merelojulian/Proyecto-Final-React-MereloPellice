@@ -1,3 +1,26 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(44, 14, 20, 0.9);
+    color: #F6EFC6;
+    margin-top: auto;
+    padding-bottom: 1rem;
+}
+
+.footer .titulo {
+    text-align: center;
+    font-size: 0.8rem;
+    padding: 1rem;
+    line-height: 1.2rem;
+    justify-content: space-between;
+}
+
 .socials {
     display: flex;
     justify-content: center;
@@ -26,9 +49,6 @@
     line-height: 0.4rem;
 }
 
-
 p span {
     font-weight: 600;
 }
-
-

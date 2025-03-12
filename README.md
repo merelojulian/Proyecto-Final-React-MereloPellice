@@ -1,6 +1,6 @@
 # Burguesía
                     
-#####Ecommerce de hamburguesas, creado con: <br/>
+Ecommerce de hamburguesas, creado con: <br/>
                     
 <div style="display: flex; gap: 10px; align-items: center;">
   <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="50"/>
@@ -17,5 +17,5 @@
 El trabajo fue realizado con el objetivo de implementar los conceptos tanto básicos como fundamentales de React y JavaScript como el uso de: promesas, contextos, rutas, entre otros. También utilizamos una base de datos con firebase y pudimos levantar nuestra página web con Vercel.<br/><br/>
 
 
-#####Fuentes
+Fuentes: <br/>
 Todas las imágenes utilizadas en este proyecto fueron sacadas de : https://unsplash.com/

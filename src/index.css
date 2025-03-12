@@ -11,5 +11,5 @@
 
 html, body {
     background-color: #F6EFC6;
-    height: 100%;
+    min-height: 100%;
 }

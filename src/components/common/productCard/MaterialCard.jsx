@@ -20,6 +20,7 @@ const MaterialCard = ({ title, price, description, imageUrl, id }) => {
             boxShadow: "5px 5px 10px rgba(44, 14, 20, 0.3)",
             borderRadius: "10px",
             transition: "transform 0.3s",
+           
             "&:hover": {
                 transform: "scale(1.02)",
             }

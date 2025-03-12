@@ -61,29 +61,46 @@ const ItemListContainer = () => {
         }
     };
 
-    return (
-
+    return ( 
         <Box sx={{ backgroundColor: "#FAF3C9", padding: 3 }}>
             <Box>
-                <Typography variant="h3" sx={{ textAlign: "center", fontWeight: "bold", color: "#2C0E14", mb: 4, mt: 5, fontSize: { xs: "2rem", sm: "3rem", md: "3.5rem" }, }}>
+                <Typography
+                    variant="h3"
+                    sx={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        color: "#2C0E14",
+                        mb: 4,
+                        mt: 5,
+                        fontSize: { xs: "2rem", sm: "3rem", md: "3.5rem" },
+                    }}
+                >
                     {obtenerTitulo()}
                 </Typography>
             </Box>
-            <Box sx={{ padding: 5 }} >
-                {/* <Button onClick={rellenar}> Rellenar db </Button> */}
-                {items.length === 0 ?
-                    (<SkeletonCustom />)
-                    : (<Grid container spacing={3} >
+            <Box sx={{ padding: 5 }}>
+                {items.length === 0 ? (
+                    <SkeletonCustom />
+                ) : (
+                    <Grid
+                        container
+                        spacing={3}
+                        sx={{
+                            justifyContent: "center",
+                            flexDirection: { xs: "column", sm: "row" },
+                            alignItems: "center",
+                        }}
+                    >
                         {items.map((item) => (
-                            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={item.id}>
+                            <Grid item xs={12} sm={6} md={3} key={item.id}>
                                 <MaterialCard {...item} />
                             </Grid>
                         ))}
                     </Grid>
-                    )
-                }
+                )}
             </Box>
-        </Box >
+        </Box>
+
     );
 };
 
